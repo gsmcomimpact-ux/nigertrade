@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -15,6 +15,13 @@ export type Language = 'fr' | 'en';
 const App: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [lang, setLang] = useState<Language>('fr');
+
+  useEffect(() => {
+    // Vérification initiale de la configuration pour Vercel
+    if (!process.env.API_KEY) {
+      console.info("Niger Trade: API_KEY non détectée. Le consultant proposera une sélection manuelle.");
+    }
+  }, []);
 
   const toggleLang = (newLang: Language) => {
     setLang(newLang);

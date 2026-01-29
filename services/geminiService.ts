@@ -1,15 +1,19 @@
 
 import { GoogleGenAI } from "@google/genai";
 
+/**
+ * Service de consultation business utilisant Gemini 3 Flash.
+ * Crée une instance unique par appel pour garantir l'actualisation de la clé API.
+ */
 export const getBusinessInsight = async (userPrompt: string) => {
   try {
     const apiKey = process.env.API_KEY;
     
     if (!apiKey) {
-      console.warn("API_KEY is missing. Please configure it in your environment variables.");
-      return "Le service de consultation virtuel est temporairement indisponible (Clé API manquante).";
+      throw new Error("API_KEY_MISSING");
     }
 
+    // Toujours créer une nouvelle instance avant l'appel
     const ai = new GoogleGenAI({ apiKey });
     
     const response = await ai.models.generateContent({
@@ -17,18 +21,20 @@ export const getBusinessInsight = async (userPrompt: string) => {
       contents: userPrompt,
       config: {
         systemInstruction: `Vous êtes l'assistant virtuel expert de NIGER TRADE, basé à Niamey. 
-        Votre rôle est de conseiller les investisseurs et entreprises sur les opportunités d'affaires au Niger. 
-        Soyez professionnel, encourageant et factuel. Mentionnez les secteurs porteurs : Mines, Agriculture, Énergie, Tech. 
-        Si on vous demande comment investir, suggérez de contacter Niger Trade via le formulaire de contact. 
-        Répondez dans la langue de l'utilisateur. Soyez concis.`,
+        Votre rôle est de conseiller les investisseurs sur les opportunités d'affaires au Niger. 
+        Secteurs prioritaires : Mines (Uranium, Or), Agriculture, Énergie Solaire, Infrastructures. 
+        Soyez formel, précis et orienté business. 
+        Répondez toujours dans la langue utilisée par l'utilisateur.`,
         temperature: 0.7,
-        topP: 0.8,
+        topP: 0.9,
       },
     });
 
-    return response.text || "Désolé, je ne peux pas traiter votre demande pour le moment.";
-  } catch (error) {
-    console.error("Gemini Error:", error);
-    return "Une erreur est survenue lors de la consultation de l'expert virtuel.";
+    return response.text;
+  } catch (error: any) {
+    console.error("Gemini API Error:", error);
+    if (error.message === "API_KEY_MISSING") return "CONFIG_REQUIRED";
+    if (error.message?.includes("entity was not found")) return "KEY_RESET_REQUIRED";
+    return "Désolé, une erreur technique est survenue. Veuillez réessayer.";
   }
 };
