@@ -122,7 +122,7 @@ const Services: React.FC<ServicesProps> = ({ lang }) => {
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-6">
             <button 
-              onClick={() => document.getElementById('consultant')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
               className="bg-white text-niger-blue px-10 py-5 rounded-2xl font-black text-sm uppercase tracking-widest hover:bg-blue-50 transition-all shadow-xl"
             >
               {t.ctaBtn1}

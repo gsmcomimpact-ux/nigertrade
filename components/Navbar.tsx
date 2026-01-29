@@ -33,11 +33,14 @@ const Navbar: React.FC<NavbarProps> = ({ isMenuOpen, setIsMenuOpen, lang, toggle
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-20">
           <div className="flex items-center">
-            <div className="flex-shrink-0 flex items-center gap-2">
-              <div className="bg-niger-blue w-10 h-10 rounded flex items-center justify-center">
+            <div className="flex-shrink-0 flex items-center gap-2 cursor-pointer" onClick={() => scrollToSection('#accueil')}>
+              <div className="bg-niger-orange w-10 h-10 rounded flex items-center justify-center shadow-sm">
                 <span className="text-white font-bold text-xl">N</span>
               </div>
-              <span className="text-niger-blue font-extrabold text-2xl tracking-tighter uppercase">{COMPANY_INFO.name}</span>
+              <span className="font-extrabold text-2xl tracking-tighter uppercase">
+                <span className="text-niger-orange">NIGER</span>
+                <span className="text-niger-blue"> TRADE</span>
+              </span>
             </div>
             <div className="hidden md:ml-10 md:flex md:space-x-8">
               {navLinks.map((link) => (

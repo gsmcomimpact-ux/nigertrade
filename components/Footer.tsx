@@ -24,8 +24,10 @@ const Footer: React.FC<FooterProps> = ({ lang }) => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
           <div className="space-y-8">
             <div className="flex items-center gap-3">
-              <div className="bg-white text-niger-blue w-12 h-12 rounded-xl flex items-center justify-center font-black text-2xl shadow-lg">N</div>
-              <span className="font-black text-2xl tracking-tighter uppercase">{COMPANY_INFO.name}</span>
+              <div className="bg-niger-orange text-white w-12 h-12 rounded-xl flex items-center justify-center font-black text-2xl shadow-lg">N</div>
+              <span className="font-black text-2xl tracking-tighter uppercase">
+                <span className="text-niger-orange">NIGER</span> TRADE
+              </span>
             </div>
             <p className="text-slate-300 text-sm leading-relaxed">
               {t.desc}
@@ -69,7 +71,7 @@ const Footer: React.FC<FooterProps> = ({ lang }) => {
         <div className="border-t border-slate-900 pt-10 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] text-slate-500 font-bold uppercase tracking-[0.2em]">
           <p>© {currentYear} {COMPANY_INFO.name}. {t.rights}</p>
           <div className="flex gap-8">
-             <span className="flex items-center gap-2 text-slate-400"><span className="text-niger-green">•</span> NIAMEY, NIGER</span>
+             <span className="flex items-center gap-2 text-slate-400"><span className="text-niger-orange">•</span> NIAMEY, NIGER</span>
              <span className="flex items-center gap-2 text-slate-400"><span className="text-niger-green">•</span> {COMPANY_INFO.phone}</span>
           </div>
         </div>

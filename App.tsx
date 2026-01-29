@@ -5,7 +5,6 @@ import Hero from './components/Hero';
 import About from './components/About';
 import Services from './components/Services';
 import Sectors from './components/Sectors';
-import AIConsultant from './components/AIConsultant';
 import InformationCenter from './components/InformationCenter';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
@@ -17,9 +16,9 @@ const App: React.FC = () => {
   const [lang, setLang] = useState<Language>('fr');
 
   useEffect(() => {
-    // Vérification initiale de la configuration pour Vercel
+    // Vérification initiale de la configuration
     if (!process.env.API_KEY) {
-      console.info("Niger Trade: API_KEY non détectée. Le consultant proposera une sélection manuelle.");
+      console.info("Niger Trade: Prêt.");
     }
   }, []);
 
@@ -55,10 +54,6 @@ const App: React.FC = () => {
 
         <div id="informations" className="py-24 bg-white">
           <InformationCenter lang={lang} />
-        </div>
-
-        <div id="consultant" className="py-24 bg-niger-blue text-white overflow-hidden relative">
-          <AIConsultant lang={lang} />
         </div>
 
         <div id="contact" className="py-24 bg-white">

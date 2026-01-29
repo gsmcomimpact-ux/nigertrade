@@ -34,7 +34,7 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
             {t.badge}
           </div>
           <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold text-white leading-tight mb-6">
-            {t.title} <span className="text-niger-green">{t.titleSuffix}</span>
+            {t.title} <span className="text-niger-orange">{t.titleSuffix}</span>
           </h1>
           <p className="text-lg md:text-xl text-blue-50 mb-10 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-light">
             {t.desc}
