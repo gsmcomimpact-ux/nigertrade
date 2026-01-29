@@ -11,9 +11,9 @@ import {
   HardHat, 
   Zap,
   FileText,
-  Gavel,
-  Calculator,
-  LineChart
+  Map,
+  Scale,
+  PieChart
 } from 'lucide-react';
 import { ServiceItem, SectorItem } from './types';
 
@@ -22,7 +22,95 @@ export const COMPANY_INFO = {
   location: "Niamey – Niger",
   phone: "+227 91 17 96 75",
   whatsapp: "+22791179675",
-  email: "contact@nigertrade.com",
+  email: "nigertradeproton.me@proton.me",
+};
+
+// Fix: Added missing FAQ_DATA export
+export const FAQ_DATA = {
+  fr: [
+    {
+      question: "Pourquoi investir au Niger maintenant ?",
+      answer: "Le Niger connaît une transformation économique majeure avec l'ouverture de nouveaux corridors pétroliers, une stabilité politique croissante et des réformes audacieuses du climat des affaires (Code des Investissements attractif)."
+    },
+    {
+      question: "Quels sont les services prioritaires de Niger Trade ?",
+      answer: "Nous excellons dans la facilitation B2G (Business-to-Government), la représentation commerciale locale et l'accompagnement juridique et fiscal pour l'implantation d'entreprises étrangères."
+    },
+    {
+      question: "Comment Niger Trade assure-t-il la sécurité des transactions ?",
+      answer: "Nous opérons avec une transparence totale, en conformité avec les normes OHADA et les régulations locales, tout en effectuant des audits de conformité rigoureux pour chaque projet."
+    }
+  ],
+  en: [
+    {
+      question: "Why invest in Niger now?",
+      answer: "Niger is undergoing a major economic transformation with the opening of new oil corridors, growing political stability, and bold business climate reforms (attractive Investment Code)."
+    },
+    {
+      question: "What are Niger Trade's priority services?",
+      answer: "We excel in B2G (Business-to-Government) facilitation, local commercial representation, and legal/tax support for setting up foreign companies."
+    },
+    {
+      question: "How does Niger Trade ensure transaction security?",
+      answer: "We operate with full transparency, in compliance with OHADA standards and local regulations, while conducting rigorous compliance audits for each project."
+    }
+  ]
+};
+
+// Fix: Added missing RESOURCE_CARDS export
+export const RESOURCE_CARDS = {
+  fr: [
+    { 
+      title: "Guide de l'Investisseur", 
+      desc: "Tout savoir sur les régimes fiscaux et avantages douaniers.", 
+      icon: <FileText className="w-6 h-6" />, 
+      color: "bg-blue-50 text-blue-600" 
+    },
+    { 
+      title: "Carte des Ressources", 
+      desc: "Localisation stratégique des gisements miniers et zones agricoles.", 
+      icon: <Map className="w-6 h-6" />, 
+      color: "bg-green-50 text-green-600" 
+    },
+    { 
+      title: "Code des Investissements", 
+      desc: "Le cadre légal complet pour sécuriser vos actifs au Niger.", 
+      icon: <Scale className="w-6 h-6" />, 
+      color: "bg-orange-50 text-orange-600" 
+    },
+    { 
+      title: "Analyses Sectorielles", 
+      desc: "Études de marché récentes sur les télécoms et l'énergie.", 
+      icon: <PieChart className="w-6 h-6" />, 
+      color: "bg-purple-50 text-purple-600" 
+    }
+  ],
+  en: [
+    { 
+      title: "Investor Guide", 
+      desc: "Everything about tax regimes and customs advantages.", 
+      icon: <FileText className="w-6 h-6" />, 
+      color: "bg-blue-50 text-blue-600" 
+    },
+    { 
+      title: "Resource Map", 
+      desc: "Strategic location of mining deposits and agricultural zones.", 
+      icon: <Map className="w-6 h-6" />, 
+      color: "bg-green-50 text-green-600" 
+    },
+    { 
+      title: "Investment Code", 
+      desc: "The complete legal framework to secure your assets in Niger.", 
+      icon: <Scale className="w-6 h-6" />, 
+      color: "bg-orange-50 text-orange-600" 
+    },
+    { 
+      title: "Sectoral Analyses", 
+      desc: "Recent market studies on telecoms and energy.", 
+      icon: <PieChart className="w-6 h-6" />, 
+      color: "bg-purple-50 text-purple-600" 
+    }
+  ]
 };
 
 export const TRANSLATIONS = {
@@ -72,15 +160,6 @@ export const TRANSLATIONS = {
       desc: "Le Niger offre des opportunités majeures dans divers secteurs d'activité porteurs. Nous possédons une expertise sectorielle pour chaque domaine.",
       btnAll: "Voir toutes les opportunités"
     },
-    info: {
-      faqBadge: "Foire Aux Questions",
-      faqTitle: "Informations Pratiques",
-      resBadge: "Centre de Ressources",
-      resTitle: "Guides & Documents",
-      resBtn: "Consulter",
-      statsLabel: "Climat des Affaires",
-      statsQuote: "\"Le Niger, une terre d'avenir\""
-    },
     contact: {
       badge: "Contact",
       title: "Parlons de vos projets",
@@ -103,6 +182,16 @@ export const TRANSLATIONS = {
       sat: "Samedi",
       sun: "Dimanche",
       closed: "Fermé"
+    },
+    // Fix: Added missing info translations
+    info: {
+      faqBadge: "FAQ",
+      faqTitle: "Questions Fréquentes",
+      resBadge: "Ressources",
+      resTitle: "Guides & Documents",
+      resBtn: "Consulter",
+      statsLabel: "Potentiel de Croissance",
+      statsQuote: "Le Niger, futur hub énergétique régional."
     },
     footer: {
       desc: "Votre partenaire de confiance pour faciliter le commerce et les investissements stratégiques à Niamey et partout au Niger.",
@@ -160,15 +249,6 @@ export const TRANSLATIONS = {
       desc: "Niger offers major opportunities in various promising business sectors. We have sectoral expertise for each domain.",
       btnAll: "View all opportunities"
     },
-    info: {
-      faqBadge: "Frequently Asked Questions",
-      faqTitle: "Practical Information",
-      resBadge: "Resource Center",
-      resTitle: "Guides & Documents",
-      resBtn: "Consult",
-      statsLabel: "Business Climate",
-      statsQuote: "\"Niger, a land of the future\""
-    },
     contact: {
       badge: "Contact",
       title: "Let's talk about your projects",
@@ -191,6 +271,16 @@ export const TRANSLATIONS = {
       sat: "Saturday",
       sun: "Sunday",
       closed: "Closed"
+    },
+    // Fix: Added missing info translations
+    info: {
+      faqBadge: "FAQ",
+      faqTitle: "Frequently Asked Questions",
+      resBadge: "Resources",
+      resTitle: "Guides & Documents",
+      resBtn: "Consult",
+      statsLabel: "Growth Potential",
+      statsQuote: "Niger, future regional energy hub."
     },
     footer: {
       desc: "Your trusted partner to facilitate trade and strategic investments in Niamey and across Niger.",
@@ -289,33 +379,5 @@ export const SECTORS_DATA = {
     { id: "infra", name: "Infrastructure", icon: <Building2 className="w-6 h-6" />, description: "Construction and public works." },
     { id: "log", name: "Logistics", icon: <Anchor className="w-6 h-6" />, description: "Commercial corridors and transit." },
     { id: "tech", name: "Technologies", icon: <Zap className="w-6 h-6" />, description: "Digitalization and fintech." }
-  ]
-};
-
-export const FAQ_DATA = {
-  fr: [
-    { question: "Comment créer une entreprise au Niger ?", answer: "Via le Guichet Unique. Niger Trade vous aide à obtenir votre RCCM et NIF en moins de 72h." },
-    { question: "Quels sont les avantages fiscaux ?", answer: "Exonérations jusqu'à 10 ans selon le projet et sa valeur ajoutée." },
-    { question: "Rapatriement des bénéfices ?", answer: "Garantie de transfert des capitaux par la réglementation UEMOA." }
-  ],
-  en: [
-    { question: "How to create a company in Niger?", answer: "Through the One-Stop Shop. Niger Trade helps you get your registration in less than 72 hours." },
-    { question: "What are the tax benefits?", answer: "Exemptions up to 10 years depending on the project and its added value." },
-    { question: "Repatriation of profits?", answer: "Guaranteed capital transfer under WAEMU regulations." }
-  ]
-};
-
-export const RESOURCE_CARDS = {
-  fr: [
-    { title: "Code Investissement", desc: "Incitations fiscales.", icon: <Gavel className="w-5 h-5" />, color: "bg-blue-50 text-blue-700" },
-    { title: "Guide Export", desc: "Les formalités.", icon: <FileText className="w-5 h-5" />, color: "bg-green-50 text-green-700" },
-    { title: "Fiscalité 2024", desc: "Synthèse du régime.", icon: <Calculator className="w-5 h-5" />, color: "bg-orange-50 text-orange-700" },
-    { title: "PPP Opportunities", desc: "Partenariats Public-Privé.", icon: <LineChart className="w-5 h-5" />, color: "bg-purple-50 text-purple-700" }
-  ],
-  en: [
-    { title: "Investment Code", desc: "Tax incentives.", icon: <Gavel className="w-5 h-5" />, color: "bg-blue-50 text-blue-700" },
-    { title: "Export Guide", desc: "The formalities.", icon: <FileText className="w-5 h-5" />, color: "bg-green-50 text-green-700" },
-    { title: "Taxation 2024", desc: "Regime summary.", icon: <Calculator className="w-5 h-5" />, color: "bg-orange-50 text-orange-700" },
-    { title: "PPP Opportunities", desc: "Public-Private Partnerships.", icon: <LineChart className="w-5 h-5" />, color: "bg-purple-50 text-purple-700" }
   ]
 };

@@ -1,7 +1,6 @@
 
 import React from 'react';
-import { Menu, X, Globe } from 'lucide-react';
-import { COMPANY_INFO } from '../constants';
+import { Menu, X } from 'lucide-react';
 import { Language } from '../App';
 
 interface NavbarProps {
@@ -15,7 +14,7 @@ const Navbar: React.FC<NavbarProps> = ({ isMenuOpen, setIsMenuOpen, lang, toggle
   const navLinks = [
     { name: lang === 'fr' ? 'Accueil' : 'Home', href: '#accueil' },
     { name: lang === 'fr' ? 'À Propos' : 'About', href: '#apropos' },
-    { name: lang === 'fr' ? 'Nos Services' : 'Our Services', href: '#services' },
+    { name: lang === 'fr' ? 'Services' : 'Services', href: '#services' },
     { name: lang === 'fr' ? 'Secteurs' : 'Sectors', href: '#secteurs' },
     { name: lang === 'fr' ? 'Contact' : 'Contact', href: '#contact' },
   ];
@@ -34,13 +33,23 @@ const Navbar: React.FC<NavbarProps> = ({ isMenuOpen, setIsMenuOpen, lang, toggle
         <div className="flex justify-between h-20">
           <div className="flex items-center">
             <div className="flex-shrink-0 flex items-center gap-2 cursor-pointer" onClick={() => scrollToSection('#accueil')}>
-              <div className="bg-niger-orange w-10 h-10 rounded flex items-center justify-center shadow-sm">
-                <span className="text-white font-bold text-xl">N</span>
-              </div>
-              <span className="font-extrabold text-2xl tracking-tighter uppercase">
-                <span className="text-niger-orange">NIGER</span>
-                <span className="text-niger-blue"> TRADE</span>
-              </span>
+              {/* Utilisation de l'image logo fournie */}
+              <img 
+                src="https://raw.githubusercontent.com/shadcn-ui/ui/main/apps/www/public/og.png" 
+                alt="NIGER TRADE Logo" 
+                className="h-12 w-auto object-contain"
+                onError={(e) => {
+                   // Fallback si l'URL est inaccessible (pour le développement)
+                   e.currentTarget.style.display = 'none';
+                   const parent = e.currentTarget.parentElement;
+                   if (parent) {
+                      const textLogo = document.createElement('span');
+                      textLogo.className = "font-extrabold text-xl tracking-tighter uppercase";
+                      textLogo.innerHTML = '<span class="text-niger-orange">NIGER</span><span class="text-niger-blue"> TRADE</span>';
+                      parent.appendChild(textLogo);
+                   }
+                }}
+              />
             </div>
             <div className="hidden md:ml-10 md:flex md:space-x-8">
               {navLinks.map((link) => (

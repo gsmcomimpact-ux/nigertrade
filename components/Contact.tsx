@@ -1,6 +1,6 @@
 
-import React from 'react';
-import { Phone, Mail, MapPin, MessageSquare, ExternalLink } from 'lucide-react';
+import React, { useState } from 'react';
+import { Phone, Mail, MapPin, MessageSquare, ExternalLink, Send } from 'lucide-react';
 import { COMPANY_INFO, TRANSLATIONS } from '../constants';
 import { Language } from '../App';
 
@@ -10,6 +10,19 @@ interface ContactProps {
 
 const Contact: React.FC<ContactProps> = ({ lang }) => {
   const t = TRANSLATIONS[lang].contact;
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: t.opt1,
+    message: ''
+  });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Création d'un lien mailto pour envoyer les données du formulaire directement à l'adresse spécifiée
+    const mailtoLink = `mailto:${COMPANY_INFO.email}?subject=${encodeURIComponent(formData.subject + ' - ' + formData.name)}&body=${encodeURIComponent("De: " + formData.name + " (" + formData.email + ")\n\n" + formData.message)}`;
+    window.location.href = mailtoLink;
+  };
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -50,13 +63,18 @@ const Contact: React.FC<ContactProps> = ({ lang }) => {
             </div>
           </div>
 
-          <div className="flex gap-4">
-            <div className="flex-shrink-0 bg-gray-50 p-4 rounded-xl text-niger-blue">
+          <div className="flex gap-4 group">
+            <div className="flex-shrink-0 bg-gray-50 p-4 rounded-xl text-niger-blue group-hover:bg-niger-blue group-hover:text-white transition-colors">
               <Mail className="w-6 h-6" />
             </div>
             <div>
               <h4 className="font-bold text-gray-900">{t.labelEmail}</h4>
-              <p className="text-gray-600">{COMPANY_INFO.email}</p>
+              <a 
+                href={`mailto:${COMPANY_INFO.email}`} 
+                className="text-gray-600 hover:text-niger-blue transition-colors break-all"
+              >
+                {COMPANY_INFO.email}
+              </a>
             </div>
           </div>
 
@@ -77,11 +95,14 @@ const Contact: React.FC<ContactProps> = ({ lang }) => {
           {/* Subtle background decoration */}
           <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -mr-32 -mt-32 blur-3xl"></div>
           
-          <form className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-6" onSubmit={(e) => e.preventDefault()}>
+          <form className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-6" onSubmit={handleSubmit}>
             <div className="space-y-2">
               <label className="text-sm font-bold text-blue-100">{t.formName}</label>
               <input 
                 type="text" 
+                required
+                value={formData.name}
+                onChange={(e) => setFormData({...formData, name: e.target.value})}
                 placeholder="Ex: Jean Dupont" 
                 className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 focus:border-niger-green focus:ring-2 focus:ring-niger-green/20 outline-none text-white placeholder-blue-200/50 transition-all"
               />
@@ -90,23 +111,33 @@ const Contact: React.FC<ContactProps> = ({ lang }) => {
               <label className="text-sm font-bold text-blue-100">{t.formEmail}</label>
               <input 
                 type="email" 
+                required
+                value={formData.email}
+                onChange={(e) => setFormData({...formData, email: e.target.value})}
                 placeholder="email@compagnie.com" 
                 className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 focus:border-niger-green focus:ring-2 focus:ring-niger-green/20 outline-none text-white placeholder-blue-200/50 transition-all"
               />
             </div>
             <div className="space-y-2 md:col-span-2">
               <label className="text-sm font-bold text-blue-100">{t.formSubject}</label>
-              <select className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 focus:border-niger-green focus:ring-2 focus:ring-niger-green/20 outline-none text-white appearance-none transition-all cursor-pointer">
-                <option className="bg-niger-blue text-white">{t.opt1}</option>
-                <option className="bg-niger-blue text-white">{t.opt2}</option>
-                <option className="bg-niger-blue text-white">{t.opt3}</option>
-                <option className="bg-niger-blue text-white">{t.opt4}</option>
+              <select 
+                value={formData.subject}
+                onChange={(e) => setFormData({...formData, subject: e.target.value})}
+                className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 focus:border-niger-green focus:ring-2 focus:ring-niger-green/20 outline-none text-white appearance-none transition-all cursor-pointer"
+              >
+                <option value={t.opt1} className="bg-niger-blue text-white">{t.opt1}</option>
+                <option value={t.opt2} className="bg-niger-blue text-white">{t.opt2}</option>
+                <option value={t.opt3} className="bg-niger-blue text-white">{t.opt3}</option>
+                <option value={t.opt4} className="bg-niger-blue text-white">{t.opt4}</option>
               </select>
             </div>
             <div className="space-y-2 md:col-span-2">
               <label className="text-sm font-bold text-blue-100">{t.formMsg}</label>
               <textarea 
                 rows={5} 
+                required
+                value={formData.message}
+                onChange={(e) => setFormData({...formData, message: e.target.value})}
                 placeholder="..." 
                 className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 focus:border-niger-green focus:ring-2 focus:ring-niger-green/20 outline-none text-white placeholder-blue-200/50 transition-all"
               ></textarea>
@@ -114,9 +145,9 @@ const Contact: React.FC<ContactProps> = ({ lang }) => {
             <div className="md:col-span-2">
               <button 
                 type="submit"
-                className="w-full md:w-auto bg-niger-green text-white px-12 py-4 rounded-xl font-bold hover:bg-green-700 transition-all shadow-lg flex items-center justify-center gap-2 border border-white/10"
+                className="w-full md:w-auto bg-niger-green text-white px-12 py-4 rounded-xl font-bold hover:bg-green-700 transition-all shadow-lg flex items-center justify-center gap-2 border border-white/10 group"
               >
-                {t.formSubmit}
+                {t.formSubmit} <Send className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </button>
             </div>
           </form>

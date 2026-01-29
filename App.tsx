@@ -5,7 +5,6 @@ import Hero from './components/Hero';
 import About from './components/About';
 import Services from './components/Services';
 import Sectors from './components/Sectors';
-import InformationCenter from './components/InformationCenter';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 
@@ -52,11 +51,7 @@ const App: React.FC = () => {
           <Sectors lang={lang} />
         </div>
 
-        <div id="informations" className="py-24 bg-white">
-          <InformationCenter lang={lang} />
-        </div>
-
-        <div id="contact" className="py-24 bg-white">
+        <div id="contact" className="py-24 bg-gray-50">
           <Contact lang={lang} />
         </div>
       </main>

@@ -21,7 +21,6 @@ const Sectors: React.FC<SectorsProps> = ({ lang }) => {
             {t.desc}
           </p>
         </div>
-        <button className="text-niger-blue font-bold border-b-2 border-niger-green pb-1">{t.btnAll}</button>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">

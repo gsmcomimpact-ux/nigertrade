@@ -21,13 +21,14 @@ const Footer: React.FC<FooterProps> = ({ lang }) => {
   return (
     <footer className="bg-slate-950 text-white pt-20 pb-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 mb-20">
           <div className="space-y-8">
             <div className="flex items-center gap-3">
-              <div className="bg-niger-orange text-white w-12 h-12 rounded-xl flex items-center justify-center font-black text-2xl shadow-lg">N</div>
-              <span className="font-black text-2xl tracking-tighter uppercase">
-                <span className="text-niger-orange">NIGER</span> TRADE
-              </span>
+              <img 
+                src="https://raw.githubusercontent.com/shadcn-ui/ui/main/apps/www/public/og.png" 
+                alt="NIGER TRADE Logo" 
+                className="h-14 w-auto object-contain brightness-0 invert" 
+              />
             </div>
             <p className="text-slate-300 text-sm leading-relaxed">
               {t.desc}
@@ -42,15 +43,6 @@ const Footer: React.FC<FooterProps> = ({ lang }) => {
               <li><button onClick={() => scrollToSection('services')} className="hover:text-niger-green transition-colors flex items-center gap-2"><span>•</span> {lang === 'fr' ? 'Nos Services' : 'Our Services'}</button></li>
               <li><button onClick={() => scrollToSection('secteurs')} className="hover:text-niger-green transition-colors flex items-center gap-2"><span>•</span> {lang === 'fr' ? 'Secteurs' : 'Sectors'}</button></li>
               <li><button onClick={() => scrollToSection('contact')} className="hover:text-niger-green transition-colors flex items-center gap-2"><span>•</span> Contact</button></li>
-            </ul>
-          </div>
-          
-          <div>
-            <h4 className="font-extrabold text-white text-lg mb-8 uppercase tracking-widest text-sm">{t.info}</h4>
-            <ul className="space-y-5 text-slate-400 text-sm">
-              <li><button onClick={() => scrollToSection('informations')} className="hover:text-white transition-colors">FAQ</button></li>
-              <li><button onClick={() => scrollToSection('informations')} className="hover:text-white transition-colors">{lang === 'fr' ? 'Guides Investisseurs' : 'Investor Guides'}</button></li>
-              <li><button onClick={() => scrollToSection('informations')} className="hover:text-white transition-colors">{lang === 'fr' ? 'Code des Investissements' : 'Investment Code'}</button></li>
             </ul>
           </div>
           
