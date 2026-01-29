@@ -29,12 +29,14 @@
     "react": "https://esm.sh/react@^19.2.4",
     "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
     "@google/genai": "https://esm.sh/@google/genai@^1.38.0",
-    "lucide-react": "https://esm.sh/lucide-react@^0.563.0"
+    "lucide-react": "https://esm.sh/lucide-react@^0.563.0?external=react"
   }
 }
 </script>
 </head>
 <body class="bg-gray-50 text-gray-900">
     <div id="root"></div>
+    <!-- Point d'entrée indispensable pour le rendu sur Vercel -->
+    <script type="module" src="index.tsx"></script>
 </body>
 </html>

@@ -72,46 +72,49 @@ const Contact: React.FC<ContactProps> = ({ lang }) => {
           </div>
         </div>
 
-        {/* Contact Form */}
-        <div className="lg:col-span-2 bg-white rounded-3xl shadow-xl border border-gray-100 p-8 md:p-12">
-          <form className="grid grid-cols-1 md:grid-cols-2 gap-6" onSubmit={(e) => e.preventDefault()}>
+        {/* Contact Form - Styled with dark background and white text */}
+        <div className="lg:col-span-2 bg-niger-blue rounded-3xl shadow-2xl p-8 md:p-12 text-white relative overflow-hidden">
+          {/* Subtle background decoration */}
+          <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -mr-32 -mt-32 blur-3xl"></div>
+          
+          <form className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-6" onSubmit={(e) => e.preventDefault()}>
             <div className="space-y-2">
-              <label className="text-sm font-bold text-gray-700">{t.formName}</label>
+              <label className="text-sm font-bold text-blue-100">{t.formName}</label>
               <input 
                 type="text" 
                 placeholder="Ex: Jean Dupont" 
-                className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-niger-blue/20 outline-none"
+                className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 focus:border-niger-green focus:ring-2 focus:ring-niger-green/20 outline-none text-white placeholder-blue-200/50 transition-all"
               />
             </div>
             <div className="space-y-2">
-              <label className="text-sm font-bold text-gray-700">{t.formEmail}</label>
+              <label className="text-sm font-bold text-blue-100">{t.formEmail}</label>
               <input 
                 type="email" 
                 placeholder="email@compagnie.com" 
-                className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-niger-blue/20 outline-none"
+                className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 focus:border-niger-green focus:ring-2 focus:ring-niger-green/20 outline-none text-white placeholder-blue-200/50 transition-all"
               />
             </div>
             <div className="space-y-2 md:col-span-2">
-              <label className="text-sm font-bold text-gray-700">{t.formSubject}</label>
-              <select className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-niger-blue/20 outline-none">
-                <option>{t.opt1}</option>
-                <option>{t.opt2}</option>
-                <option>{t.opt3}</option>
-                <option>{t.opt4}</option>
+              <label className="text-sm font-bold text-blue-100">{t.formSubject}</label>
+              <select className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 focus:border-niger-green focus:ring-2 focus:ring-niger-green/20 outline-none text-white appearance-none transition-all cursor-pointer">
+                <option className="bg-niger-blue text-white">{t.opt1}</option>
+                <option className="bg-niger-blue text-white">{t.opt2}</option>
+                <option className="bg-niger-blue text-white">{t.opt3}</option>
+                <option className="bg-niger-blue text-white">{t.opt4}</option>
               </select>
             </div>
             <div className="space-y-2 md:col-span-2">
-              <label className="text-sm font-bold text-gray-700">{t.formMsg}</label>
+              <label className="text-sm font-bold text-blue-100">{t.formMsg}</label>
               <textarea 
                 rows={5} 
                 placeholder="..." 
-                className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-niger-blue/20 outline-none"
+                className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 focus:border-niger-green focus:ring-2 focus:ring-niger-green/20 outline-none text-white placeholder-blue-200/50 transition-all"
               ></textarea>
             </div>
             <div className="md:col-span-2">
               <button 
                 type="submit"
-                className="w-full md:w-auto bg-niger-green text-white px-12 py-4 rounded-xl font-bold hover:bg-green-800 transition-all shadow-lg flex items-center justify-center gap-2"
+                className="w-full md:w-auto bg-niger-green text-white px-12 py-4 rounded-xl font-bold hover:bg-green-700 transition-all shadow-lg flex items-center justify-center gap-2 border border-white/10"
               >
                 {t.formSubmit}
               </button>
