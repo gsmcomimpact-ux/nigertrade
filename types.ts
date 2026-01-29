@@ -16,6 +16,7 @@ export interface SectorItem {
   name: string;
   icon: React.ReactNode;
   description: string;
+  highlights: string[]; // Points clés ou opportunités spécifiques
 }
 
 export interface ChatMessage {

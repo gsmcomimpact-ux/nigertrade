@@ -153,9 +153,10 @@ export const TRANSLATIONS = {
       ctaBtn2: "Demander un devis"
     },
     sectors: {
-      badge: "Secteurs Clés",
-      title: "Où nous intervenons",
-      desc: "Le Niger offre des opportunités majeures dans divers secteurs d'activité porteurs. Nous possédons une expertise sectorielle pour chaque domaine.",
+      badge: "Secteurs Stratégiques",
+      title: "Opportunités de Croissance",
+      desc: "Le Niger regorge de secteurs à fort potentiel. NIGER TRADE vous aide à naviguer dans ces écosystèmes en pleine expansion.",
+      labelHighlights: "Opportunités Stratégiques",
       btnAll: "Voir toutes les opportunités"
     },
     contact: {
@@ -236,9 +237,10 @@ export const TRANSLATIONS = {
       ctaBtn2: "Request a quote"
     },
     sectors: {
-      badge: "Key Sectors",
-      title: "Where we operate",
-      desc: "Niger offers major opportunities in various promising business sectors. We have sectoral expertise for each domain.",
+      badge: "Strategic Sectors",
+      title: "Growth Opportunities",
+      desc: "Niger is full of high-potential sectors. NIGER TRADE helps you navigate these rapidly expanding ecosystems.",
+      labelHighlights: "Strategic Opportunities",
       btnAll: "View all opportunities"
     },
     contact: {
@@ -353,17 +355,77 @@ export const SERVICES_DATA = {
 
 export const SECTORS_DATA = {
   fr: [
-    { id: "mines", name: "Mines & Énergie", icon: <HardHat className="w-6 h-6" />, description: "Industrie extractive et renouvelables." },
-    { id: "agri", name: "Agrobusiness", icon: <Wheat className="w-6 h-6" />, description: "Transformation agro-industrielle." },
-    { id: "infra", name: "Infrastructures", icon: <Building2 className="w-6 h-6" />, description: "Construction et travaux publics." },
-    { id: "log", name: "Logistique", icon: <Anchor className="w-6 h-6" />, description: "Corridors commerciaux et transit." },
-    { id: "tech", name: "Technologies", icon: <Zap className="w-6 h-6" />, description: "Digitalisation et fintech." }
+    { 
+      id: "mines", 
+      name: "Mines & Énergie", 
+      icon: <HardHat className="w-8 h-8" />, 
+      description: "Le Niger est un acteur mondial majeur de l'uranium et possède d'importantes réserves d'or et de pétrole. Le nouveau pipeline Niger-Bénin ouvre des perspectives d'exportation sans précédent.",
+      highlights: ["Uranium (4ème producteur mondial)", "Nouveau pipeline pétrolier export", "Potentiel Solaire immense", "Code Pétrolier attractif"]
+    },
+    { 
+      id: "agri", 
+      name: "Agrobusiness", 
+      icon: <Wheat className="w-8 h-8" />, 
+      description: "Premier exportateur d'oignons en Afrique de l'Ouest, le Niger offre des opportunités massives dans la transformation agro-industrielle et l'irrigation moderne.",
+      highlights: ["Filière Oignon & Niébé", "Élevage (Cuir & Peaux)", "Transformation locale", "Aménagements hydro-agricoles"]
+    },
+    { 
+      id: "infra", 
+      name: "Infrastructures & BTP", 
+      icon: <Building2 className="w-8 h-8" />, 
+      description: "L'urbanisation galopante et les projets de modernisation (Niamey Nyala) créent une demande constante en logements, routes et infrastructures énergétiques.",
+      highlights: ["Logements sociaux", "Infrastructures routières", "Partenariats Public-Privé (PPP)", "Électrification rurale"]
+    },
+    { 
+      id: "log", 
+      name: "Logistique & Transit", 
+      icon: <Anchor className="w-8 h-8" />, 
+      description: "En tant que carrefour entre le Maghreb et l'Afrique subsaharienne, le Niger est un hub stratégique pour le transit de marchandises vers les pays enclavés.",
+      highlights: ["Ports secs (Dosso/Gaya)", "Zones de Libre-Échange (ZLECAf)", "Transport de fret international", "Entreposage pétrolier"]
+    },
+    { 
+      id: "tech", 
+      name: "Technologies & Digital", 
+      icon: <Zap className="w-8 h-8" />, 
+      description: "La digitalisation de l'administration et l'essor de la Fintech ouvrent de nouveaux marchés pour les solutions de paiement et les services numériques.",
+      highlights: ["Mobile Money & Fintech", "Digitalisation administrative", "Startups technologiques", "Déploiement fibre optique"]
+    }
   ],
   en: [
-    { id: "mines", name: "Mining & Energy", icon: <HardHat className="w-6 h-6" />, description: "Extractive and renewable industries." },
-    { id: "agri", name: "Agrobusiness", icon: <Wheat className="w-6 h-6" />, description: "Agro-industrial processing." },
-    { id: "infra", name: "Infrastructure", icon: <Building2 className="w-6 h-6" />, description: "Construction and public works." },
-    { id: "log", name: "Logistics", icon: <Anchor className="w-6 h-6" />, description: "Commercial corridors and transit." },
-    { id: "tech", name: "Technologies", icon: <Zap className="w-6 h-6" />, description: "Digitalization and fintech." }
+    { 
+      id: "mines", 
+      name: "Mining & Energy", 
+      icon: <HardHat className="w-8 h-8" />, 
+      description: "Niger is a major global uranium player and possesses significant gold and oil reserves. The new Niger-Benin pipeline opens unprecedented export prospects.",
+      highlights: ["Uranium (4th global producer)", "New oil export pipeline", "Immense solar potential", "Attractive Petroleum Code"]
+    },
+    { 
+      id: "agri", 
+      name: "Agrobusiness", 
+      icon: <Wheat className="w-8 h-8" />, 
+      description: "Leading onion exporter in West Africa, Niger offers massive opportunities in agro-industrial processing and modern irrigation.",
+      highlights: ["Onion & Cowpea value chain", "Livestock (Leather & Skins)", "Local processing", "Hydro-agricultural projects"]
+    },
+    { 
+      id: "infra", 
+      name: "Infrastructure & BTP", 
+      icon: <Building2 className="w-8 h-8" />, 
+      description: "Rapid urbanization and modernization projects (Niamey Nyala) create constant demand for housing, roads, and energy infrastructure.",
+      highlights: ["Social housing", "Road infrastructure", "Public-Private Partnerships (PPP)", "Rural electrification"]
+    },
+    { 
+      id: "log", 
+      name: "Logistics & Transit", 
+      icon: <Anchor className="w-8 h-8" />, 
+      description: "As a crossroads between the Maghreb and Sub-Saharan Africa, Niger is a strategic hub for goods transit to landlocked countries.",
+      highlights: ["Dry ports (Dosso/Gaya)", "Free Trade Zones (AfCFTA)", "International freight", "Oil storage"]
+    },
+    { 
+      id: "tech", 
+      name: "Tech & Digital", 
+      icon: <Zap className="w-8 h-8" />, 
+      description: "Government digitalization and the rise of Fintech open new markets for payment solutions and digital services.",
+      highlights: ["Mobile Money & Fintech", "Administrative digitalization", "Tech startups", "Fiber optic deployment"]
+    }
   ]
 };
