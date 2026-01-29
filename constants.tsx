@@ -25,7 +25,6 @@ export const COMPANY_INFO = {
   email: "nigertradeproton.me@proton.me",
 };
 
-// Fix: Added missing FAQ_DATA export
 export const FAQ_DATA = {
   fr: [
     {
@@ -57,7 +56,6 @@ export const FAQ_DATA = {
   ]
 };
 
-// Fix: Added missing RESOURCE_CARDS export
 export const RESOURCE_CARDS = {
   fr: [
     { 
@@ -162,18 +160,13 @@ export const TRANSLATIONS = {
     },
     contact: {
       badge: "Contact",
-      title: "Parlons de vos projets",
-      desc: "Que vous soyez un investisseur étranger ou une entreprise locale, nous sommes là pour faciliter votre réussite.",
-      labelPhone: "Téléphone / WhatsApp",
-      labelLoc: "Localisation",
+      title: "Nos Coordonnées Directes",
+      desc: "Nous sommes à votre disposition pour faciliter vos projets au Niger. Contactez-nous directement par téléphone, WhatsApp ou email.",
+      labelPhone: "Téléphone & WhatsApp",
+      labelLoc: "Siège Social",
       labelEmail: "Email Professionnel",
       labelHours: "Horaires de Bureau",
-      btnChat: "Discuter maintenant",
-      formName: "Nom Complet",
-      formEmail: "Adresse Email",
-      formSubject: "Objet de votre demande",
-      formMsg: "Message",
-      formSubmit: "Envoyer le message",
+      btnChat: "Discuter sur WhatsApp",
       opt1: "Facilitation d'Affaires",
       opt2: "Représentation Commerciale",
       opt3: "Commerce Général / Import-Export",
@@ -183,7 +176,6 @@ export const TRANSLATIONS = {
       sun: "Dimanche",
       closed: "Fermé"
     },
-    // Fix: Added missing info translations
     info: {
       faqBadge: "FAQ",
       faqTitle: "Questions Fréquentes",
@@ -251,18 +243,13 @@ export const TRANSLATIONS = {
     },
     contact: {
       badge: "Contact",
-      title: "Let's talk about your projects",
-      desc: "Whether you are a foreign investor or a local company, we are here to facilitate your success.",
-      labelPhone: "Phone / WhatsApp",
-      labelLoc: "Location",
+      title: "Direct Contact Information",
+      desc: "We are available to facilitate your projects in Niger. Contact us directly via phone, WhatsApp, or email.",
+      labelPhone: "Phone & WhatsApp",
+      labelLoc: "Headquarters",
       labelEmail: "Professional Email",
       labelHours: "Office Hours",
-      btnChat: "Chat now",
-      formName: "Full Name",
-      formEmail: "Email Address",
-      formSubject: "Subject of your request",
-      formMsg: "Message",
-      formSubmit: "Send message",
+      btnChat: "Chat on WhatsApp",
       opt1: "Business Facilitation",
       opt2: "Commercial Representation",
       opt3: "General Trade / Import-Export",
@@ -272,7 +259,6 @@ export const TRANSLATIONS = {
       sun: "Sunday",
       closed: "Closed"
     },
-    // Fix: Added missing info translations
     info: {
       faqBadge: "FAQ",
       faqTitle: "Frequently Asked Questions",

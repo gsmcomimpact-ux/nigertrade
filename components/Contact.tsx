@@ -1,6 +1,6 @@
 
-import React, { useState } from 'react';
-import { Phone, Mail, MapPin, MessageSquare, ExternalLink, Send } from 'lucide-react';
+import React from 'react';
+import { Phone, Mail, MapPin, MessageSquare, ExternalLink } from 'lucide-react';
 import { COMPANY_INFO, TRANSLATIONS } from '../constants';
 import { Language } from '../App';
 
@@ -10,148 +10,89 @@ interface ContactProps {
 
 const Contact: React.FC<ContactProps> = ({ lang }) => {
   const t = TRANSLATIONS[lang].contact;
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: t.opt1,
-    message: ''
-  });
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Création d'un lien mailto pour envoyer les données du formulaire directement à l'adresse spécifiée
-    const mailtoLink = `mailto:${COMPANY_INFO.email}?subject=${encodeURIComponent(formData.subject + ' - ' + formData.name)}&body=${encodeURIComponent("De: " + formData.name + " (" + formData.email + ")\n\n" + formData.message)}`;
-    window.location.href = mailtoLink;
-  };
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="text-center mb-16">
         <h2 className="text-niger-blue font-bold text-sm uppercase tracking-widest mb-4">{t.badge}</h2>
-        <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{t.title}</h3>
-        <p className="text-gray-600 max-w-2xl mx-auto text-lg">
+        <h3 className="text-3xl md:text-5xl font-extrabold text-gray-900 mb-6">{t.title}</h3>
+        <p className="text-gray-600 max-w-2xl mx-auto text-lg leading-relaxed">
           {t.desc}
         </p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-        {/* Contact Info */}
-        <div className="space-y-8">
-          <div className="flex gap-4">
-            <div className="flex-shrink-0 bg-gray-50 p-4 rounded-xl text-niger-blue">
-              <Phone className="w-6 h-6" />
-            </div>
-            <div>
-              <h4 className="font-bold text-gray-900">{t.labelPhone}</h4>
-              <p className="text-gray-600 font-medium">{COMPANY_INFO.phone}</p>
-              <a 
-                href={`https://wa.me/${COMPANY_INFO.whatsapp}`} 
-                className="text-niger-green text-sm font-bold inline-flex items-center gap-1 mt-1 hover:underline"
-              >
-                {t.btnChat} <ExternalLink className="w-3 h-3" />
-              </a>
-            </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Phone / WhatsApp Card */}
+        <div className="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 hover:shadow-xl transition-all group">
+          <div className="bg-gray-50 w-16 h-16 rounded-2xl flex items-center justify-center text-niger-blue mb-6 group-hover:bg-niger-blue group-hover:text-white transition-all">
+            <Phone className="w-6 h-6" />
           </div>
-
-          <div className="flex gap-4">
-            <div className="flex-shrink-0 bg-gray-50 p-4 rounded-xl text-niger-blue">
-              <MapPin className="w-6 h-6" />
-            </div>
-            <div>
-              <h4 className="font-bold text-gray-900">{t.labelLoc}</h4>
-              <p className="text-gray-600">{COMPANY_INFO.location}</p>
-            </div>
-          </div>
-
-          <div className="flex gap-4 group">
-            <div className="flex-shrink-0 bg-gray-50 p-4 rounded-xl text-niger-blue group-hover:bg-niger-blue group-hover:text-white transition-colors">
-              <Mail className="w-6 h-6" />
-            </div>
-            <div>
-              <h4 className="font-bold text-gray-900">{t.labelEmail}</h4>
-              <a 
-                href={`mailto:${COMPANY_INFO.email}`} 
-                className="text-gray-600 hover:text-niger-blue transition-colors break-all"
-              >
-                {COMPANY_INFO.email}
-              </a>
-            </div>
-          </div>
-
-          <div className="bg-niger-blue/5 p-8 rounded-2xl border border-niger-blue/10">
-            <h4 className="text-niger-blue font-bold mb-4 flex items-center gap-2">
-              <MessageSquare className="w-5 h-5" /> {t.labelHours}
-            </h4>
-            <ul className="space-y-2 text-sm text-gray-600">
-              <li className="flex justify-between"><span>{t.monFri}</span> <span>08h00 - 18h00</span></li>
-              <li className="flex justify-between"><span>{t.sat}</span> <span>09h00 - 13h00</span></li>
-              <li className="flex justify-between font-bold text-niger-green italic"><span>{t.sun}</span> <span>{t.closed}</span></li>
-            </ul>
-          </div>
+          <h4 className="text-xl font-bold text-gray-900 mb-2">{t.labelPhone}</h4>
+          <p className="text-gray-600 font-medium text-lg mb-4">{COMPANY_INFO.phone}</p>
+          <a 
+            href={`https://wa.me/${COMPANY_INFO.whatsapp}`} 
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 bg-niger-green text-white px-6 py-2.5 rounded-xl text-sm font-bold hover:bg-green-700 transition-all"
+          >
+            {t.btnChat} <ExternalLink className="w-4 h-4" />
+          </a>
         </div>
 
-        {/* Contact Form - Styled with dark background and white text */}
-        <div className="lg:col-span-2 bg-niger-blue rounded-3xl shadow-2xl p-8 md:p-12 text-white relative overflow-hidden">
-          {/* Subtle background decoration */}
-          <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -mr-32 -mt-32 blur-3xl"></div>
-          
-          <form className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-6" onSubmit={handleSubmit}>
-            <div className="space-y-2">
-              <label className="text-sm font-bold text-blue-100">{t.formName}</label>
-              <input 
-                type="text" 
-                required
-                value={formData.name}
-                onChange={(e) => setFormData({...formData, name: e.target.value})}
-                placeholder="Ex: Jean Dupont" 
-                className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 focus:border-niger-green focus:ring-2 focus:ring-niger-green/20 outline-none text-white placeholder-blue-200/50 transition-all"
-              />
-            </div>
-            <div className="space-y-2">
-              <label className="text-sm font-bold text-blue-100">{t.formEmail}</label>
-              <input 
-                type="email" 
-                required
-                value={formData.email}
-                onChange={(e) => setFormData({...formData, email: e.target.value})}
-                placeholder="email@compagnie.com" 
-                className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 focus:border-niger-green focus:ring-2 focus:ring-niger-green/20 outline-none text-white placeholder-blue-200/50 transition-all"
-              />
-            </div>
-            <div className="space-y-2 md:col-span-2">
-              <label className="text-sm font-bold text-blue-100">{t.formSubject}</label>
-              <select 
-                value={formData.subject}
-                onChange={(e) => setFormData({...formData, subject: e.target.value})}
-                className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 focus:border-niger-green focus:ring-2 focus:ring-niger-green/20 outline-none text-white appearance-none transition-all cursor-pointer"
-              >
-                <option value={t.opt1} className="bg-niger-blue text-white">{t.opt1}</option>
-                <option value={t.opt2} className="bg-niger-blue text-white">{t.opt2}</option>
-                <option value={t.opt3} className="bg-niger-blue text-white">{t.opt3}</option>
-                <option value={t.opt4} className="bg-niger-blue text-white">{t.opt4}</option>
-              </select>
-            </div>
-            <div className="space-y-2 md:col-span-2">
-              <label className="text-sm font-bold text-blue-100">{t.formMsg}</label>
-              <textarea 
-                rows={5} 
-                required
-                value={formData.message}
-                onChange={(e) => setFormData({...formData, message: e.target.value})}
-                placeholder="..." 
-                className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 focus:border-niger-green focus:ring-2 focus:ring-niger-green/20 outline-none text-white placeholder-blue-200/50 transition-all"
-              ></textarea>
-            </div>
-            <div className="md:col-span-2">
-              <button 
-                type="submit"
-                className="w-full md:w-auto bg-niger-green text-white px-12 py-4 rounded-xl font-bold hover:bg-green-700 transition-all shadow-lg flex items-center justify-center gap-2 border border-white/10 group"
-              >
-                {t.formSubmit} <Send className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </button>
-            </div>
-          </form>
+        {/* Email Card */}
+        <div className="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 hover:shadow-xl transition-all group">
+          <div className="bg-gray-50 w-16 h-16 rounded-2xl flex items-center justify-center text-niger-blue mb-6 group-hover:bg-niger-blue group-hover:text-white transition-all">
+            <Mail className="w-6 h-6" />
+          </div>
+          <h4 className="text-xl font-bold text-gray-900 mb-2">{t.labelEmail}</h4>
+          <a 
+            href={`mailto:${COMPANY_INFO.email}`} 
+            className="text-niger-blue font-medium text-lg hover:underline break-all"
+          >
+            {COMPANY_INFO.email}
+          </a>
+          <p className="text-gray-400 text-xs mt-4 uppercase tracking-widest font-bold">Réponse sous 24h</p>
         </div>
+
+        {/* Location Card */}
+        <div className="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 hover:shadow-xl transition-all group">
+          <div className="bg-gray-50 w-16 h-16 rounded-2xl flex items-center justify-center text-niger-blue mb-6 group-hover:bg-niger-blue group-hover:text-white transition-all">
+            <MapPin className="w-6 h-6" />
+          </div>
+          <h4 className="text-xl font-bold text-gray-900 mb-2">{t.labelLoc}</h4>
+          <p className="text-gray-600 font-medium text-lg">{COMPANY_INFO.location}</p>
+          <p className="text-gray-400 text-xs mt-4 uppercase tracking-widest font-bold">Niamey, Niger</p>
+        </div>
+      </div>
+
+      {/* Business Hours Banner */}
+      <div className="mt-12 bg-niger-blue rounded-[2rem] p-8 md:p-12 text-white relative overflow-hidden shadow-2xl">
+        <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
+          <div className="flex items-center gap-6">
+            <div className="bg-white/10 p-4 rounded-2xl backdrop-blur-sm">
+              <MessageSquare className="w-8 h-8 text-white" />
+            </div>
+            <div>
+              <h4 className="text-2xl font-bold mb-1">{t.labelHours}</h4>
+              <p className="text-blue-100 font-light italic">Nous restons à votre écoute pour toute urgence stratégique.</p>
+            </div>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 w-full md:w-auto">
+            <div className="text-center md:text-left">
+              <p className="text-xs uppercase tracking-widest text-blue-200 font-bold mb-1">{t.monFri}</p>
+              <p className="text-lg font-bold">08h00 - 18h00</p>
+            </div>
+            <div className="text-center md:text-left">
+              <p className="text-xs uppercase tracking-widest text-blue-200 font-bold mb-1">{t.sat}</p>
+              <p className="text-lg font-bold">09h00 - 13h00</p>
+            </div>
+            <div className="text-center md:text-left">
+              <p className="text-xs uppercase tracking-widest text-niger-orange font-bold mb-1">{t.sun}</p>
+              <p className="text-lg font-bold italic">{t.closed}</p>
+            </div>
+          </div>
+        </div>
+        <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -mr-32 -mt-32 blur-3xl"></div>
       </div>
     </div>
   );
