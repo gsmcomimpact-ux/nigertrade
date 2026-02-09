@@ -22,7 +22,7 @@ export const COMPANY_INFO = {
   location: "Niamey – Niger",
   phone: "+227 91 17 96 75",
   whatsapp: "+22791179675",
-  email: "nigertradeproton.me@proton.me",
+  email: "contact@nigertrade.com",
 };
 
 export const FAQ_DATA = {
@@ -214,7 +214,7 @@ export const TRANSLATIONS = {
       title: "Your Partner to ",
       titleSuffix: "Succeed in Niger",
       p1: "Based in Niamey, NIGER TRADE is the preferred interface between investors and local opportunities. Niger is a country with immense resources, but navigating its business landscape requires sharp local expertise.",
-      p2: "Our mission is simple: secure your investments, facilitate your procedures, and catalyze your strategic partnerships.",
+      p2: "Notre mission est simple : sécuriser vos investissements, faciliter vos procédures, et catalyser vos partenariats stratégiques.",
       val1: "Integrity",
       val1Desc: "We act with transparency and ethics in all our transactions.",
       val2: "Excellence",
