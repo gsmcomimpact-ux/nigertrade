@@ -5,7 +5,7 @@ import { GoogleGenAI } from "@google/genai";
  * Service de consultation business utilisant Gemini 3 Flash.
  * Crée une instance unique par appel pour garantir l'actualisation de la clé API.
  */
-export const getBusinessInsight = async (userPrompt: string) => {
+export const getBusinessInsight = async (userPrompt: string): Promise<string> => {
   try {
     const apiKey = process.env.API_KEY;
     
@@ -30,7 +30,7 @@ export const getBusinessInsight = async (userPrompt: string) => {
       },
     });
 
-    return response.text;
+    return response.text || "Désolé, je n'ai pas pu générer de réponse.";
   } catch (error: any) {
     console.error("Gemini API Error:", error);
     if (error.message === "API_KEY_MISSING") return "CONFIG_REQUIRED";

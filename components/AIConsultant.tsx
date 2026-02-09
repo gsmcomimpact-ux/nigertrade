@@ -24,7 +24,7 @@ const AIConsultant: React.FC<AIConsultantProps> = ({ lang }) => {
 
   useEffect(() => {
     setMessages([{ role: 'assistant', content: intro }]);
-  }, [lang]);
+  }, [lang, intro]);
 
   useEffect(() => {
     if (scrollRef.current) {
@@ -33,25 +33,29 @@ const AIConsultant: React.FC<AIConsultantProps> = ({ lang }) => {
   }, [messages]);
 
   const handleConnectKey = async () => {
-    if (window.aistudio && window.aistudio.openSelectKey) {
-      await window.aistudio.openSelectKey();
+    // FIX TS2339: Using (window as any) to bypass environment-specific property check safely
+    const aistudio = (window as any).aistudio;
+    if (aistudio && aistudio.openSelectKey) {
+      await aistudio.openSelectKey();
       setNeedsKey(false);
-      // On réinitialise pour encourager le nouvel essai
     } else {
-      alert("Veuillez configurer l'API_KEY dans vos variables d'environnement Vercel.");
+      alert(lang === 'fr' 
+        ? "L'interface de sélection de clé n'est pas disponible dans cet environnement." 
+        : "The key selection interface is not available in this environment.");
     }
   };
 
   const handleSend = async () => {
     if (!input.trim() || isLoading) return;
 
-    const userMsg: ChatMessage = { role: 'user', content: input };
+    const userInput = input.trim();
+    const userMsg: ChatMessage = { role: 'user', content: userInput };
     setMessages(prev => [...prev, userMsg]);
     setInput('');
     setIsLoading(true);
 
     const context = `User language: ${lang}.`;
-    const aiResponse = await getBusinessInsight(`${context} ${input}`);
+    const aiResponse = await getBusinessInsight(`${context} ${userInput}`);
 
     if (aiResponse === "CONFIG_REQUIRED" || aiResponse === "KEY_RESET_REQUIRED") {
       setNeedsKey(true);
@@ -62,7 +66,15 @@ const AIConsultant: React.FC<AIConsultantProps> = ({ lang }) => {
           : "To enable my analysis capabilities, please connect your Google GenAI service." 
       }]);
     } else {
-      setMessages(prev => [...prev, { role: 'assistant', content: aiResponse }]);
+      // FIX TS2345: The content is guaranteed to be a string by the service or this fallback
+      const finalContent: string = aiResponse || (lang === 'fr' 
+        ? "Désolé, je n'ai pas pu générer de réponse." 
+        : "Sorry, I couldn't generate a response.");
+        
+      setMessages(prev => [...prev, { 
+        role: 'assistant', 
+        content: finalContent 
+      }]);
     }
     
     setIsLoading(false);
@@ -85,13 +97,15 @@ const AIConsultant: React.FC<AIConsultantProps> = ({ lang }) => {
           <p className="text-blue-100 text-lg mb-8 leading-relaxed">
             {lang === 'fr' 
               ? "Posez vos questions sur le marché nigérien : régimes fiscaux, secteurs d'investissement, ou démarches administratives. Notre IA vous répond instantanément."
-              : "Ask your questions about the Nigerien market: tax regimes, investment sectors, or administrative procedures. Our AI answers you instantly."}
+              : "Ask your questions about the Nigerien market: tax regimes, investment sectors, or administrative procedures. Our IA answers you instantly."}
           </p>
           <div className="flex flex-wrap gap-4">
              {suggestions.map((s, idx) => (
                <button 
                  key={idx} 
-                 onClick={() => setInput(s)}
+                 onClick={() => {
+                   setInput(s);
+                 }}
                  className="bg-white/10 px-4 py-2 rounded-lg text-sm border border-white/20 hover:bg-white/20 transition-colors"
                >
                  {s}

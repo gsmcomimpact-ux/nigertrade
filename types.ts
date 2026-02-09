@@ -19,6 +19,7 @@ export interface SectorItem {
   highlights: string[]; // Points clés ou opportunités spécifiques
 }
 
+// Added ChatMessage interface to resolve error in AIConsultant.tsx
 export interface ChatMessage {
   role: 'user' | 'assistant';
   content: string;
