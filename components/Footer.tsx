@@ -21,16 +21,12 @@ const Footer: React.FC<FooterProps> = ({ lang }) => {
   return (
     <footer className="bg-slate-950 text-white pt-20 pb-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 mb-20">
-          <div className="space-y-8">
-            <div className="flex items-center gap-3">
-              <img 
-                src="https://raw.githubusercontent.com/shadcn-ui/ui/main/apps/www/public/og.png" 
-                alt="NIGER TRADE Logo" 
-                className="h-14 w-auto object-contain brightness-0 invert" 
-              />
-            </div>
-            <p className="text-slate-300 text-sm leading-relaxed">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 mb-20">
+          <div className="space-y-6">
+            <h3 className="font-extrabold text-white text-2xl tracking-tighter uppercase">
+              <span className="text-niger-orange">NIGER</span><span className="text-niger-blue"> TRADE</span>
+            </h3>
+            <p className="text-slate-300 text-sm leading-relaxed max-w-md">
               {t.desc}
             </p>
           </div>
@@ -44,19 +40,6 @@ const Footer: React.FC<FooterProps> = ({ lang }) => {
               <li><button onClick={() => scrollToSection('secteurs')} className="hover:text-niger-green transition-colors flex items-center gap-2"><span>•</span> {lang === 'fr' ? 'Secteurs' : 'Sectors'}</button></li>
               <li><button onClick={() => scrollToSection('contact')} className="hover:text-niger-green transition-colors flex items-center gap-2"><span>•</span> Contact</button></li>
             </ul>
-          </div>
-          
-          <div>
-            <h4 className="font-extrabold text-white text-lg mb-8 uppercase tracking-widest text-sm">{t.news}</h4>
-            <p className="text-slate-400 text-sm mb-6 font-light">{t.newsDesc}</p>
-            <div className="flex flex-col gap-3">
-              <input 
-                type="email" 
-                placeholder="Email" 
-                className="bg-slate-900 border border-slate-800 rounded-xl px-5 py-3 text-sm w-full focus:ring-2 focus:ring-niger-green outline-none text-white transition-all"
-              />
-              <button className="bg-niger-green hover:bg-green-700 text-white px-5 py-3 rounded-xl text-sm font-black uppercase tracking-widest transition-all">{t.newsBtn}</button>
-            </div>
           </div>
         </div>
         

@@ -120,7 +120,7 @@ export const TRANSLATIONS = {
       desc: "NIGER TRADE facilite vos investissements et partenariats stratégiques. Nous transformons les complexités administratives en opportunités de croissance durable.",
       btnServices: "Nos Services",
       btnMore: "En savoir plus",
-      check1: "Expertise B2B & B2G",
+      check1: "Expertise B2B & B2C",
       check2: "Siège à Niamey",
       check3: "Accès International",
       statLabel: "Fiabilité & Transparence"
@@ -204,7 +204,7 @@ export const TRANSLATIONS = {
       desc: "NIGER TRADE facilitates your investments and strategic partnerships. We turn administrative complexities into sustainable growth opportunities.",
       btnServices: "Our Services",
       btnMore: "Learn More",
-      check1: "B2B & B2G Expertise",
+      check1: "B2B & B2C Expertise",
       check2: "Headquarters in Niamey",
       check3: "International Access",
       statLabel: "Reliability & Transparency"
